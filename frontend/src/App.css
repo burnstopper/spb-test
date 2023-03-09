@@ -1,0 +1,44 @@
+html {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+    -webkit-box-sizing: inherit;
+    box-sizing: inherit;
+}
+
+body {
+    margin: 20px 0;
+    padding: 0;
+    line-height: 1;
+    font-family: "Roboto", sans-serif;
+    color: #202020;
+    background-color: #fbfbfb;
+    font-smooth: always;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: lightblue;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #f8f5e6;
+}
+
+.historybtn {
+    width: 80%;
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row-reverse;
+}
