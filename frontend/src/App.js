@@ -6,7 +6,7 @@ import Test from "./components/Test/Test"
 import Results from "./components/Results/Results"
 import Pretest from "./components/Pretest/Pretest"
 import History from "./components/History/History"
-import { burnoutQuizData } from "./data"
+import { spbQuizData } from "./data"
 import { Button } from "react-bootstrap"
 import CookieLib from "./utils/cookies"
 import axios from "axios"
@@ -62,7 +62,7 @@ function App() {
             <div className="content">
                 {showTest ? (
                     <Test
-                        quizData={burnoutQuizData}
+                        quizData={spbQuizData}
                         setResults={setResults}
                         setToken={setToken}
                     />
