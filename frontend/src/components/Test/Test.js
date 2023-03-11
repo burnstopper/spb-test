@@ -24,13 +24,12 @@ const Test = ({ quizData, setResults, setToken }) => {
 
     const mappingAnswers = {
         NONE: "NONE",
-        Никогда: "NEVER",
-        "Очень редко": "VERY_RARELY",
-        Редко: "RARELY",
-        Иногда: "SOMETIMES",
-        Часто: "OFTEN",
-        "Очень часто": "VERY_OFTEN",
-        Ежедневно: "DAILY ",
+        "Полностью не согласен": "COMPLETELY_DISAGREE ",
+        "В основном не согласен": "MOSTLY_DISAGREE",
+        "Слегка не согласен": "SLIGHTLY_DISAGREE",
+        "Слегка согласен": "SLIGHTLY_AGREE",
+        "В основном согласен": "MOSTLY_AGREE",
+        "Полностью согласен": "COMPLETELY_AGREE",
     }
 
     // useEffect(() => {
@@ -79,11 +78,39 @@ const Test = ({ quizData, setResults, setToken }) => {
             answer20: mappingAnswers[answers[19]],
             answer21: mappingAnswers[answers[20]],
             answer22: mappingAnswers[answers[21]],
+            answer23: mappingAnswers[answers[22]],
+            answer24: mappingAnswers[answers[23]],
+            answer25: mappingAnswers[answers[24]],
+            answer26: mappingAnswers[answers[25]],
+            answer27: mappingAnswers[answers[26]],
+            answer28: mappingAnswers[answers[27]],
+            answer29: mappingAnswers[answers[28]],
+            answer30: mappingAnswers[answers[29]],
+            answer31: mappingAnswers[answers[30]],
+            answer32: mappingAnswers[answers[31]],
+            answer33: mappingAnswers[answers[32]],
+            answer34: mappingAnswers[answers[33]],
+            answer35: mappingAnswers[answers[34]],
+            answer36: mappingAnswers[answers[35]],
+            answer37: mappingAnswers[answers[36]],
+            answer38: mappingAnswers[answers[37]],
+            answer39: mappingAnswers[answers[38]],
+            answer40: mappingAnswers[answers[39]],
+            answer41: mappingAnswers[answers[40]],
+            answer42: mappingAnswers[answers[41]],
+            answer43: mappingAnswers[answers[42]],
+            answer44: mappingAnswers[answers[43]],
+            answer45: mappingAnswers[answers[44]],
+            answer46: mappingAnswers[answers[45]],
+            answer47: mappingAnswers[answers[46]],
+            answer48: mappingAnswers[answers[47]],
+            answer49: mappingAnswers[answers[48]],
+            answer50: mappingAnswers[answers[49]],
         }
         console.log(data)
         try {
             const response = await axios.post(
-                "http://burnout.westeurope.cloudapp.azure.com/api/v1/answers",
+                "http://burnout.westeurope.cloudapp.azure.com/spb/api/v1/answers",
                 data,
                 {
                     headers: {

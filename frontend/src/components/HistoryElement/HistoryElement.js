@@ -29,7 +29,8 @@ const HistoryElement = ({ id, results, setResults }) => {
         <tr>
             <td>{id}</td>
             <td>{transformTime(results?.date_time)}</td>
-            <td>{results?.integral_index_percent}%</td>
+            <td>{results?.catastrophization}%</td>
+            <td>{results?.self_esteem}</td>
             <td>
                 <Button variant="success" onClick={setHistoryResult}>
                     Подгрузить

@@ -38,7 +38,7 @@ function App() {
         if (token && token !== "undefined") {
             try {
                 const response = await axios.get(
-                    `http://burnout.westeurope.cloudapp.azure.com//api/v1/results?token=${token}`,
+                    `http://burnout.westeurope.cloudapp.azure.com/spb/api/v1/results?token=${token}`,
                     {
                         headers: {
                             "Content-Type": "application/json",

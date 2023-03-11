@@ -39,7 +39,8 @@ const History = ({ setResults, loadHistory, historyResults }) => {
                     <tr>
                         <th>#</th>
                         <th>Дата</th>
-                        <th>Интегральный индекс выгорания</th>
+                        <th>Катастрофизация</th>
+                        <th>Самооценка</th>
                         <th></th>
                     </tr>
                 </thead>
