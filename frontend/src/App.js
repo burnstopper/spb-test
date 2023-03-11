@@ -6,9 +6,10 @@ import Test from "./components/Test/Test"
 import Results from "./components/Results/Results"
 import Pretest from "./components/Pretest/Pretest"
 import History from "./components/History/History"
-import { spbQuizData } from "./data"
+import { burnoutQuizData } from "./data"
 import { Button } from "react-bootstrap"
 import CookieLib from "./utils/cookies"
+import axios from "axios"
 
 function App() {
     const [results, setResults] = useState(0)
@@ -19,21 +20,49 @@ function App() {
 
     const [showHistory, setShowHistory] = useState(false)
 
+    const [historyResults, setHistoryResults] = useState(null)
+
     const handleClick = () => {
         setShowTest(true)
     }
 
     const handleHistoryClick = () => {
         setShowHistory(!showHistory)
+        if (!showHistory) {
+            loadHistory()
+        }
+    }
+
+    const loadHistory = async () => {
+        const token = CookieLib.getCookieToken()
+        if (token && token !== "undefined") {
+            try {
+                const response = await axios.get(
+                    `http://burnout.westeurope.cloudapp.azure.com//api/v1/results?token=${token}`,
+                    {
+                        headers: {
+                            "Content-Type": "application/json",
+                        },
+                    }
+                )
+                console.log(response.data)
+                setHistoryResults(response.data)
+                return response.data
+            } catch (error) {
+                console.error(error)
+            }
+        } else {
+            setHistoryResults(null)
+        }
     }
 
     return (
         <div className="app">
-            <Header token={token} />
+            <Header token={token} setToken={setToken} />
             <div className="content">
                 {showTest ? (
                     <Test
-                        quizData={spbQuizData}
+                        quizData={burnoutQuizData}
                         setResults={setResults}
                         setToken={setToken}
                     />
@@ -41,13 +70,21 @@ function App() {
                     <Pretest handleClick={handleClick} />
                 )}
 
-                <Results results={results} />
+                <Results results={results?.result || results} />
                 <div className="historybtn">
                     <Button variant="success" onClick={handleHistoryClick}>
                         История
                     </Button>
                 </div>
-                {showHistory ? <History setResults={setResults} /> : <></>}
+                {showHistory ? (
+                    <History
+                        setResults={setResults}
+                        loadHistory={loadHistory}
+                        historyResults={historyResults}
+                    />
+                ) : (
+                    <></>
+                )}
             </div>
         </div>
     )
