@@ -3,7 +3,7 @@ WORKDIR /app
 COPY ./frontend/package.json ./
 RUN yarn install
 COPY ./frontend .
-ARG BURNOUT_HOST_NAME
+ARG SPB_HOST_NAME
 ENV REACT_APP_HOST_NAME=
 RUN yarn build
 
