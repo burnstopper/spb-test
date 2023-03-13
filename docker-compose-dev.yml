@@ -3,7 +3,8 @@ version: "3.3"
 services:
   spb-backend:
     container_name: spb-backend
-    image: ghcr.io/burnstopper/spb-backend:1.0
+    build:
+      context: ./backend
     networks:
       - local-net
     env_file:
@@ -14,13 +15,14 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
   spb-frontend:
     container_name: spb-frontend
-    image: ghcr.io/burnstopper/spb-frontend:1.0
+    build:
+      context: ./frontend
     networks:
       - local-net
     ports:
       - "80:80"
     depends_on:
-      - backend
+      - spb-backend
 
 networks:
   local-net:

@@ -11,4 +11,6 @@ interface ResultService {
     fun getResult(id: Int): Result?
 
     fun getResults(token: String): List<Result>
+
+    fun getByQuizAndRespondent(quizId: Int, respondentId: Int?): List<Result>
 }
