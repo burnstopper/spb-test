@@ -1,6 +1,6 @@
 server {
-    listen 80;
-    listen [::]:80;
+    listen $SPB_PORT;
+    listen [::]:$SPB_PORT;
 
     server_name spb.burnoutstopper.com;
 
