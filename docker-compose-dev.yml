@@ -1,0 +1,32 @@
+version: "3.3"
+
+services:
+  spb-backend:
+    container_name: spb-backend
+    build: ./backend
+    environment:
+      SPRING_DATASOURCE_URL: ${SPRING_DATASOURCE_URL}
+      SPRING_DATASOURCE_USERNAME: ${SPRING_DATASOURCE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${SPRING_DATASOURCE_PASSWORD}
+    networks:
+      - local-net
+
+  spb-nginx:
+    container_name: spb-nginx
+    build:
+      context: ./
+      args:
+        SPB_HOST_NAME: ${SPB_HOST_NAME}
+    environment:
+      SPB_HOST_NAME: ${SPB_HOST_NAME}
+      SPB_PORT: ${SPB_PORT}
+    ports:
+      - "${SPB_PORT}:${SPB_PORT}"
+    depends_on:
+      - spb-backend
+    networks:
+      - local-net
+
+networks:
+  local-net:
+    driver: bridge
