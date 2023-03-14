@@ -2,7 +2,7 @@ server {
     listen $SPB_PORT;
     listen [::]:$SPB_PORT;
 
-    server_name spb.burnoutstopper.com;
+    server_name $SPB_HOST_NAME;
 
     location / {
         root /usr/share/nginx/spb;
